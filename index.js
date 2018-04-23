@@ -59,6 +59,10 @@ app.use(
     context: {
       models,
       user: req.user,
+      // user: {
+      //   id: 'B1T-JfYnf',
+      //   username: 'Garrick Gunn',
+      // },
       SECRET,
       SECRET2,
     },
