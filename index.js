@@ -60,8 +60,8 @@ app.use(
       models,
       user: req.user,
       // user: {
-      //   id: 'B1T-JfYnf',
-      //   username: 'Garrick Gunn',
+      //   id: 'S1kwVYT2G',
+      //   username: 'Bob Sagat',
       // },
       SECRET,
       SECRET2,

@@ -89,5 +89,6 @@ export const tryLogin = async (email, password, models, SECRET, SECRET2) => {
     ok: true,
     token,
     refreshToken,
+    user,
   };
 };

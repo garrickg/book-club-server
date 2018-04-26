@@ -9,6 +9,7 @@ export default {
   },
   Query: {
     allBooks: async (parent, args, { models }) => models.Book.findAll({ order: [['title', 'ASC']] }),
+    myBooks: async (parent, { userId }, { models }) => models.Book.findAll({ where: { ownerId: userId }, order: [['title', 'ASC']] }),
   },
   Mutation: {
     addBook: async (parent, args, { models, user }) => {

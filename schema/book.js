@@ -16,6 +16,7 @@ export default `
 
   type Query {
       allBooks: [Book!]!
+      myBooks(userId: String!): [Book!]!
   }
 
   type Mutation {

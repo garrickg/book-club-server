@@ -25,6 +25,7 @@ type LoginResponse {
     token: String!
     refreshToken: String!
     errors: [Error!]
+    user: User!
 }
 
 type Mutation {
