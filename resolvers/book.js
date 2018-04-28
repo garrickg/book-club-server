@@ -14,6 +14,8 @@ export default {
   Mutation: {
     addBook: async (parent, args, { models, user }) => {
       try {
+        console.log(args);
+        console.log(user);
         await models.Book.create({
           ...args,
           ownerId: user.id,
