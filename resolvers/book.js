@@ -4,8 +4,8 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   Book: {
-    owner: ({ ownerId }, args, { models }) => models.User.findOne({ where: { id: ownerId } }),
-    loaner: ({ loanerId }, args, { models }) => models.User.findOne({ where: { id: loanerId } }),
+    owner: ({ owner_id }, args, { models }) => models.User.findOne({ where: { id: owner_id } }),
+    loaner: ({ loaner_id }, args, { models }) => models.User.findOne({ where: { id: loaner_id } }),
   },
   Query: {
     allBooks: async (parent, args, { models }) => models.Book.findAll({ order: [['title', 'ASC']] }),

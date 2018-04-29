@@ -5,7 +5,6 @@ export default `
     approved: Boolean!
     active: Boolean!
     book: Book!
-    owner: User!
     requester: User!
   }
 

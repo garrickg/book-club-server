@@ -6,11 +6,19 @@ import { tryLogin } from '../shared/auth';
 export default {
   User: {
     books: ({ id }, args, { models }) => models.Book.findAll({ where: { owner_id: id } }),
-    myRequests: ({ id }, args, { models }) => models.Request.findAll({ where: { requester_id: id } }),
-    requestsForMe: ({ id }, args, { models }) => models.sequelize.query(
+    // myRequests: (parent, args, { models, user }) => models.Request.findAll({ where: { requester_id: user.id } }),
+    myRequests: (parent, args, { models, user }) => models.sequelize.query(
+      'select * from requests as r join books as b on r.book_id = b.id where requester_id = ?',
+      {
+        replacements: [user.id],
+        model: models.Request,
+        raw: true,
+      },
+    ),
+    requestsForMe: (parent, args, { models, user }) => models.sequelize.query(
       'select * from requests as r join books as b on r.book_id = b.id where owner_id = ?',
       {
-        replacements: [id],
+        replacements: [user.id],
         model: models.Request,
         raw: true,
       },

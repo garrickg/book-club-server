@@ -2,16 +2,8 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   Request: {
-    book: ({ bookId }, args, { models }) => models.Book.findOne({ where: { id: bookId } }),
-    owner: ({ bookId }, args, { models }) => models.sequelize.query(
-      'select * from users as u join books as b on u.id = b.owner_id where b.id = ?',
-      {
-        replacements: [bookId],
-        model: models.User,
-        raw: true,
-      },
-    ),
-    requester: ({ requesterId }, args, { models }) => models.User.findOne({ where: { id: requesterId } }),
+    book: ({ book_id }, args, { models }) => models.Book.findOne({ where: { id: book_id } }),
+    requester: ({ requester_id }, args, { models }) => models.User.findOne({ where: { id: requester_id } }),
   },
   Mutation: {
     approveRequest: async (parent, { id }, { models }) => {
