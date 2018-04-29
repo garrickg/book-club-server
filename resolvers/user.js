@@ -8,7 +8,7 @@ export default {
     books: ({ id }, args, { models }) => models.Book.findAll({ where: { owner_id: id } }),
     // myRequests: (parent, args, { models, user }) => models.Request.findAll({ where: { requester_id: user.id } }),
     myRequests: (parent, args, { models, user }) => models.sequelize.query(
-      'select * from requests as r join books as b on r.book_id = b.id where requester_id = ?',
+      'select r.id, r.approved, r.active, r.book_id, r.requester_id from requests as r join books as b on r.book_id = b.id where requester_id = ?',
       {
         replacements: [user.id],
         model: models.Request,
@@ -16,7 +16,7 @@ export default {
       },
     ),
     requestsForMe: (parent, args, { models, user }) => models.sequelize.query(
-      'select * from requests as r join books as b on r.book_id = b.id where owner_id = ?',
+      'select r.id, r.approved, r.active, r.book_id, r.requester_id from requests as r join books as b on r.book_id = b.id where owner_id = ?',
       {
         replacements: [user.id],
         model: models.Request,

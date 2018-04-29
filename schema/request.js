@@ -15,7 +15,7 @@ export default `
 
   type Mutation {
     approveRequest(id: String!): RequestResponse!
-    removeRequest(id: String!): RequestResponse!    
+    # removeRequest(id: String!): RequestResponse!    
   }
 
 `;

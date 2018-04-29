@@ -22,21 +22,21 @@ export default {
         };
       }
     },
-    removeRequest: async (parent, { id }, { models }) => {
-      try {
-        await models.Request.update(
-          { active: false },
-          { where: { id } },
-        );
-        return {
-          ok: true,
-        };
-      } catch (err) {
-        return {
-          ok: false,
-          errors: formatErrors(err, models),
-        };
-      }
-    },
+    // removeRequest: async (parent, { id }, { models }) => {
+    //   try {
+    //     await models.Request.update(
+    //       { active: false },
+    //       { where: { id } },
+    //     );
+    //     return {
+    //       ok: true,
+    //     };
+    //   } catch (err) {
+    //     return {
+    //       ok: false,
+    //       errors: formatErrors(err, models),
+    //     };
+    //   }
+    // },
   },
 };
