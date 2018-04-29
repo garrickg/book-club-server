@@ -31,7 +31,7 @@ type LoginResponse {
 type Mutation {
     register(username: String!, email: String!, password: String!): LoginResponse!
     login(email: String!, password: String!): LoginResponse!
-    updateUser(city: String!, state: String!): UpdateResponse!
+    updateUser(username: String!, city: String!, state: String!): UpdateResponse!
 }
 
 `;

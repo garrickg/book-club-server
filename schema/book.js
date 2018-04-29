@@ -3,6 +3,7 @@ export default `
   type Book {
     id: String!
     title: String!
+    author: String!
     owner: User!
     loaner: User
     requested: Boolean!
@@ -15,12 +16,12 @@ export default `
   }
 
   type Query {
-      allBooks: [Book!]!
-      myBooks(userId: String!): [Book!]!
+    allBooks: [Book!]!
+    myBooks(userId: String!): [Book!]!
   }
 
   type Mutation {
-    addBook(title: String!, image: String!): BookResponse!
+    addBook(title: String!, image: String!, author: String!): BookResponse!
     removeBook(id: String!): BookResponse!
     requestBook(id: String!): BookResponse!
     returnBook(id: String!): BookResponse!

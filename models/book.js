@@ -6,6 +6,7 @@ export default (sequelize, DataTypes) => {
       primaryKey: true,
     },
     title: DataTypes.STRING,
+    author: DataTypes.STRING,
     image: DataTypes.STRING,
     requested: {
       type: DataTypes.BOOLEAN,

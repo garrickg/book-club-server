@@ -39,10 +39,11 @@ export default {
         };
       }
     },
-    updateUser: async (parent, { city, state }, { models, user }) => {
+    updateUser: async (parent, { username, city, state }, { models, user }) => {
       try {
         await models.User.update(
           {
+            username,
             city,
             state,
           },
