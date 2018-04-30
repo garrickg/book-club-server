@@ -4,12 +4,11 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   Book: {
-    owner: ({ owner_id }, args, { models }) => models.User.findOne({ where: { id: owner_id } }),
-    loaner: ({ loaner_id }, args, { models }) => models.User.findOne({ where: { id: loaner_id } }),
+    owner: ({ ownerId }, args, { models }) => models.User.findOne({ where: { id: ownerId } }),
   },
   Query: {
     allBooks: async (parent, args, { models }) => models.Book.findAll({ order: [['title', 'ASC']] }),
-    myBooks: async (parent, { userId }, { models }) => models.Book.findAll({ where: { ownerId: userId }, order: [['title', 'ASC']] }),
+    myBooks: async (parent, args, { models, user }) => models.Book.findAll({ where: { ownerId: user.id }, order: [['title', 'ASC']] }),
   },
   Mutation: {
     addBook: async (parent, args, { models, user }) => {
@@ -75,7 +74,6 @@ export default {
         await Promise.all([
           models.Book.update(
             {
-              loanerId: null,
               requested: false,
             },
             { where: { id: request.bookId } },

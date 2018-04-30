@@ -5,7 +5,6 @@ export default `
     title: String!
     author: String!
     owner: User!
-    loaner: User
     requested: Boolean!
     image: String!
   }
@@ -17,7 +16,7 @@ export default `
 
   type Query {
     allBooks: [Book!]!
-    myBooks(userId: String!): [Book!]!
+    myBooks: [Book!]!
   }
 
   type Mutation {

@@ -21,12 +21,6 @@ export default (sequelize, DataTypes) => {
         field: 'owner_id',
       },
     });
-    Book.belongsTo(models.User, {
-      foreignKey: {
-        name: 'lonaerId',
-        field: 'loaner_id',
-      },
-    });
     Book.belongsToMany(models.User, {
       through: models.Request,
       foreignKey: {
