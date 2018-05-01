@@ -4,8 +4,8 @@ type User {
     id: String!
     username: String!
     email: String!
-    city: String!
-    state: String!
+    city: String
+    state: String
     books: [Book!]!
     myRequests: [Request!]!
     requestsForMe: [Request!]!

@@ -1,0 +1,26 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: 
+      - webnet
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: book_club
+  web:
+    image: book-club-server
+    ports:
+      - "8080:8080"
+    networks: 
+      - webnet
+    environment:
+      DB_HOST: db
+    command: ["./wait-for-it.sh", "db:5432", "--", "node", "index.js"]
+networks: 
+  webnet:
+volumes:
+  pgdata:
+    external: true
