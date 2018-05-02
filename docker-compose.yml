@@ -11,14 +11,25 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: book_club
   web:
-    image: book-club-server
-    ports:
-      - "8080:8080"
+    image: garrickg/book-club-server:latest
     networks: 
       - webnet
     environment:
       DB_HOST: db
     command: ["./wait-for-it.sh", "db:5432", "--", "node", "index.js"]
+    depends_on:
+      - db
+  nginx:
+    image: nginx
+    networks: 
+      - webnet
+    volumes:
+    - ./book-club.template:/etc/nginx/conf.d/book-club.template
+    ports:
+    - "80:80"
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/book-club.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    depends_on:
+      - web
 networks: 
   webnet:
 volumes:
