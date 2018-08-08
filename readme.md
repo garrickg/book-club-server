@@ -5,7 +5,7 @@ touch .babelrc > {"presets": ["env", "stage-3"]}
 touch .gitignore
 package.json > "start": "nodemon --exec babel-node index.js"
 npm i eslint --save-dev
-eslint init
+eslint --init
 -Use a popular style guide
 -Airbnb
 -No react
